@@ -3,7 +3,7 @@ import copy
 from P4 import *
 from math import sqrt, log
 
-MCTS_ITERATION = 4000
+
 C = 1.1
 
 class Node:
@@ -53,7 +53,6 @@ class Node:
         return self.parent == None
     
         
-
 
     def simulation (self):
         res = 0
@@ -175,27 +174,3 @@ class Node:
 
 
 
-def robot_joue_encore_mieux(noeud_racine, val): #MCTS
-    if (val == couleur.rouge) : 
-        val2 = couleur.jaune 
-    else :
-        val2 = couleur.rouge
-    for i in range (MCTS_ITERATION) :
-        tmp = noeud_racine.selection()
-        tmp.extension()
-        if (len(tmp.enfants) != 0) :
-            tmp = random.choice(tmp.enfants)
-            simulation = tmp.simulation()
-            tmp.propagationDuResultat(simulation)
-        else : 
-            
-            if (verif_gagnage(val, tmp.etat)):
-                simulation = 1
-            elif (verif_gagnage(val2, tmp.etat)) :
-                simulation = -1
-            else : 
-                simulation = 0 
-            
-        tmp.propagationDuResultat(simulation)
-    
-    return noeud_racine.meilleurEnfant().mouvement

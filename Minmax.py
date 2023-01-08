@@ -5,8 +5,8 @@ import random
 MAX_DEPTH_MINMAX = 2.0
 
 
-def robot_joue_mieux(liste, grille):
-    colonneAJouer = score(grille, MAX_DEPTH_MINMAX, 1)
+def robot_joue_mieux(liste, grille, max_depth):
+    colonneAJouer = score(grille, max_depth, 1)
     return colonneAJouer
 
 
